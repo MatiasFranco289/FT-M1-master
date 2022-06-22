@@ -62,7 +62,7 @@ if(true) {
 console.log(instructor);
 
 -Se imprime bar cuyo valor es undefined porque el hoisting permite que la variable sea reconocida pero no su valor.
--Se imprime baz que da un error porque al no usar "var" nunca la declaramos solo hicimos una asignacion de valor.
+-Se imprime baz que da un error porque al no usar "var" nunca la declaramos solo hicimos una asignacion de valor y por lo tanto el hoisting no funciona.
 -Se ejecuta foo(); y se imprime "Hola".
 ```
 
@@ -109,20 +109,21 @@ console.log(pm);
 ```javascript
 6 / "3" //Esto se ejecuta como una division normal y da 2, js transforma el string en un entero automaticamente.
 "2" * "3"//Lo mismo, se ejecuta como la operacion normal y da 6
-4 + 5 + "px"//El resultado es 9px, js primero suma los dos enteros y luego concatena px, el resultado es un string
-"$" + 4 + 5//El resultado es $45, en este caso se concatenan todos los elementos en lugar de sumarse, si 4 y 5 se escriben entre () si son sumados.
+4 + 5 + "px"//El resultado es 9px, porque la suma se lee de izquierda a derecha 4+5 es 9 entero y 9+"px"  da como resultado una  concatenacion
+"$" + 4 + 5//El resultado es $45, porque la suma se lee de izquierda a derehca, intenta sumar $+4 y como no puede lo concatena y luego intenta sumar $4+5 y como no todos son
+//enteros vuelve a concatenar dando comor resultado $45.
 "4" - 2//El resultado es 2, como una resta normal
 "4px" - 2//El resultado es NaN, al contener caracteres no numericos no es posible realizar una operacion entre un string y un entero
 7 / 0//El resultado es infinito, no se puede dividir por 0
 {}[0]//El resultado es siempre el numero entre corchetes.
-parseInt("09")//El resultado es 9, al transformarse en entero el 0 de adelante se borra.
+parseInt("09")//El resultado es 9, al transformarse en entero el 0 de adelante se borra, parseInt puede extraer un numero de una cadena aunque esta contenga caracteres que no son numerosz
 5 && 2 //Esto devuelve 2, devuelve el primer valor falso en caso de que exista porque si en un AND existe algun valor false este devolvera false, si no hay valor falso como en este caso devuelve el ultimo valor.
 2 && 5//Devuelve 5 porque es el ultimo valor y no hay valor 0
-5 || 0//Devuelve 0 porque es un valor falso.
-0 || 5//Devuelve 0 porque es equivalente a false.
+5 || 0//Devuelve 5 porque es un valor verdadero y como es un AND le basta con solo un valor verdadero.
+0 || 5//Devuelve 5 porque 0 es falso y 5 es verdadero y un AND devuelve TRUE si existe al menos un valor verdadero.
 [3]+[3]-[10]//Devuelve 3310, la concatenacion de elementos, cada elemento es tomado como un string
 3>2>1//Devuelve false porque 3>2 es true pero true no es mayor a 1, es igual
-[] == ![]//Esto devuelve false, son dos arrays que contienen lo mismo pero son DIFERENTES arrays, son como dos tazas que pueden verse igual pero no son las mismas de todas formas.
+[] == ![]//Esto devuelve true, son dos arrays que contienen lo mismo pero son DIFERENTES arrays, son como dos tazas que pueden verse igual pero no son las mismas de todas formas.
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -218,5 +219,5 @@ printing();
 ```
 El orden seria 1,4,3,2.
 Primero se imprimirian 1 y 4 porque pasan al stack de ejecucion directamente.
-3 pasa a resolverse en segundo plano y tiene que esperar que se terminen de imprimir 1 y 4.
-Una vez que transcurrio el segundo de espera, pasa a ejecutarse la funcion que imprimiria el 2.
+3 y 4 se envian a web api y pasan a resolverse en segundo plano y tienen que esperar que se terminen de imprimir 1 y 4 que ya estan en la pila de ejecucion.
+Una vez que transcurrio el tiempo de espera se imprime el 3 porque su tiempo de espera era menor, seguido del 2 porque su tiempo de espera era de 1 segundo.
