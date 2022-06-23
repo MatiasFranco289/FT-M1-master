@@ -1,0 +1,7 @@
+-Sets: Son como listas/Arrays pero no puedes contener elementos repetidos.
+//Acordate que las pilas y los stacks son listas, arrays, sets, etc, lo que hace que sean tales son su comportamiento.
+Es decir el orden en que entrar y salen los datos.
+-Pilas(Stacks): El ultimo elemento en entrar es el primo en salir (Resolverse).Last in First out por sus siglas LIFO.
+Basicamente si agregamos los elementos 1,2,3 el primero en resolverse sera el 3.
+-Colas(Queue): El ultimo en entrar es el ultimo en salir.Osea el primero en entrar es el primero en salir por su siglas FIFO.
+
