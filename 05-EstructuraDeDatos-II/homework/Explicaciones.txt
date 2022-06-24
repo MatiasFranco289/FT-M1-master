@@ -1,0 +1,10 @@
+Listas enlazadas
+
+Nodos:
+Recorda que listas enlazas son una serie de objetos NODOS, SIN relacion entre ellos, excepto que cada uno de estos objetos tiene una propiedad que contiene el siguiente objeto.
+Un nodo debe tener siempre las propiedad de value donde se guardaran los datos en si que pueden ser cualquier cosa y la propiedad de NEXT que comenzara siendo null pero luego
+nuestra LISTA debera asignar a esta propiedad el siguiente nodo.
+
+Lista:
+Tambien hay que tener en cuenta la LISTA que es una clase que debera organizar estos nodos asignandoles los valores correctos.La lista debe tener dos propiedades, HEAD que comenzara
+siempre siendo NULL y luego contendra siempre al primer nodo y la otra propiedad es SIZE donde simplemente se guardara el largo de la lista.
