@@ -8,3 +8,13 @@ nuestra LISTA debera asignar a esta propiedad el siguiente nodo.
 Lista:
 Tambien hay que tener en cuenta la LISTA que es una clase que debera organizar estos nodos asignandoles los valores correctos.La lista debe tener dos propiedades, HEAD que comenzara
 siempre siendo NULL y luego contendra siempre al primer nodo y la otra propiedad es SIZE donde simplemente se guardara el largo de la lista.
+
+
+Hash
+
+El hash es bastante facil, basicamente creamos un array, este array contendra objetos vacios.
+Creamos una funcion que generara un hash code, este codigo puede generarse de muchas maneras distintas, da igual, por ejemplo una manera es sumando el codigo ascii de cada una
+de las letras de una palabra y luego sacando el producto de esta suma por el largo del array, esta forma es muy mala pero sigue siendo una forma valida.
+Este codigo se utilizara como index para guardar un valor en nuestro array.En caso de que este index dentro de nuestro array se encuentre vacio, debemos crear antes un objeto
+vacio y luego añadir a este objeto vacio una propiedad cuyo nombre sea la llave sin hashear y su valor el valor que querramos guardar dentro.
+Esto de crear un objeto vacio en lugar de volcar el valor de una se hace porque si hicieramos esto, en caso de que existiran dos hashes iguales sobreescribiriamos valores.

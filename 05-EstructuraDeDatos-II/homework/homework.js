@@ -117,41 +117,37 @@ function HashTable() {
   class HashTable{
     constructor(){
       this.numBuckets = 35;
-      this.buckets = [];
+      this.hashtable = [];
     }
 
-    hash(arg1){
-      var sumCharacter = 0;
+    hash(input){
+      let charSum = 0;
 
-      for(let f=0;f<arg1.length;f++){
-        sumCharacter += arg1.charCodeAt(f);
+      for(let f=0;f<input.length;f++){
+        charSum += input.charCodeAt(f);
       }
 
-      return sumCharacter%this.numBuckets;
+      return charSum%this.numBuckets;
     }
 
     set(key, value){
-      if(typeof(key)!=='string'){throw new TypeError('Keys must be strings');}
-
-      var hashedKey = this.hash(key);//Hasheo la clave que recibi
-
-      if(!this.buckets[hashedKey]){//Si la posicion en el array resultante del hash esta vacia
-        this.buckets[hashedKey] = {};//Creo un objeto vacio en la posicion
-      }
-
-      this.buckets[hashedKey][key] = value;
+      if(typeof(key)!=='string') throw new TypeError('Keys must be string');
+      let hashKey = this.hash(key);
+      if(!this.hashtable[hashKey]) this.hashtable[hashKey] = {};
+      this.hashtable[hashKey][key] = value;
     }
 
     get(key){
-      return this.buckets[this.hash(key)][key];
+      return this.hashtable[this.hash(key)][key];
     }
 
     hasKey(key){
-      return this.buckets[this.hash(key)][key]!=null;
+      return this.hashtable[this.hash(key)][key] != null;
     }
   }
 
   return new HashTable;
+  
 }
 
 // No modifiquen nada debajo de esta linea
