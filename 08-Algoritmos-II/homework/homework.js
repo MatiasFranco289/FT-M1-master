@@ -57,22 +57,24 @@ function mergeSort(array, profundidad = 0) {
     return array;
   }
 
+  function MergeAndSort(arr1,arr2){
+    let leftIndex = 0;
+    let rightIndex = 0;
+    let sortedArray = [];
 
-    function MergeAndSort(arr1,arr2) {//Puse esto porque el .sort del js da mal, es un bubble sort
-      let arr = arr1.concat(arr2);
-      var len = arr.length;
-  
-      for (var i = 0; i < len ; i++) {
-        for(var j = 0 ; j < len - i - 1; j++){
-         if (arr[j] > arr[j + 1]) {
-          var temp = arr[j];
-          arr[j] = arr[j+1];
-          arr[j + 1] = temp;
-         }
-       }
+    while(leftIndex < arr1.length && rightIndex < arr2.length){
+      if(arr1[leftIndex] < arr2[rightIndex]){
+        sortedArray.push(arr1[leftIndex]);
+        leftIndex++;
       }
-      return arr;
+      else{
+        sortedArray.push(arr2[rightIndex]);
+        rightIndex++;
+      }
     }
+
+    return sortedArray.concat(arr1.slice(leftIndex)).concat(arr2.slice(rightIndex));
+  }
   
 
 }
