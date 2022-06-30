@@ -12,7 +12,78 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
 
-function LinkedList() {
+function LinkedList(){
+  class LinkedList{
+    constructor(){
+      this.head = null;
+    }
+
+    add(newVal){
+      if(!this.head){//Si mi head es null es porque la lista esta vacia
+        this.head = new Node(newVal);
+      }
+      else{
+        let current = this.head;
+
+        while(current.next){//Mientras que haya un siguiente
+          current = current.next;//Me voy moviendo al siguiente
+        }
+        //Si ya no hay un siguiente
+        current.next = new Node(newVal);
+      }
+    }
+    remove(){
+      if(!this.head) return null;//La lista esta vacia; retorna null
+
+      if(!this.head.next){//Si la lista no tiene un next solo tiene un valor; el del head
+        let aux = this.head.value;
+        this.head = null;
+        return aux;
+      }
+
+      let current = this.head;
+
+      while(current.next.next){
+        current = current.next;
+      }
+
+      let aux = current.next.value;
+      current.next = null;
+      return aux;
+    }
+    search(arg){
+      if(!this.head) return null;//Lista vacia
+      let current = this.head;
+
+      if(typeof(arg) === 'function'){//Recibe un cb
+
+        while(!arg(current.value) && current.next){//Mientras que el cb devuelve falso con el valor actual y exista un valor siguiente
+          current = current.next;//Me muevo al valor siguiente;
+        }
+
+        return arg(current.value)?current.value:null;
+      }
+      else{//Recibe un valor numerico
+
+        while(current.value!=arg && current.next){//Mientras que haya un next y el valor del nodo actual no coincida con el buscado
+          current = current.next;//Se mueve al siguiente nodo
+        }
+
+        //Si llego hasta aca es porque encontro el valor y termino el while o porque no lo encontro pero ya no hay mas valores asi que verifico que retornar
+        return current.value==arg?current.value:null;
+      }
+    }
+  }
+  
+  return new LinkedList;
+}
+
+function Node(value){
+  this.value = value;
+  this.next = null;
+}
+
+/* function LinkedList() {
   class LinkedList{
     constructor(){
       this.head = null;
@@ -83,13 +154,13 @@ function LinkedList() {
   }
 
   return new LinkedList;
-}
+} */
 
 
-function Node(value) {
+/* function Node(value) {
   this.value = value;
   this.next = null;
-}
+} */
 
 
 
