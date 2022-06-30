@@ -18,3 +18,4 @@ de las letras de una palabra y luego sacando el producto de esta suma por el lar
 Este codigo se utilizara como index para guardar un valor en nuestro array.En caso de que este index dentro de nuestro array se encuentre vacio, debemos crear antes un objeto
 vacio y luego añadir a este objeto vacio una propiedad cuyo nombre sea la llave sin hashear y su valor el valor que querramos guardar dentro.
 Esto de crear un objeto vacio en lugar de volcar el valor de una se hace porque si hicieramos esto, en caso de que existiran dos hashes iguales sobreescribiriamos valores.
+

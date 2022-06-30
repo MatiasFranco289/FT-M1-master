@@ -80,7 +80,7 @@ var alumno = {
 function getNombre() {
   return this.nombre;
 }
-
+ 
 /*
   Ejercicio 3
 

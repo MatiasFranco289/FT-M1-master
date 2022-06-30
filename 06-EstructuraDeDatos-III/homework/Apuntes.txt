@@ -1,0 +1,6 @@
+Formas de recorrer un arbol
+
+Pre-Order > Nodo Izq Der.
+In ord > Izq Nodo Der
+Post-Ord > izq Der Nodo
+Por anchira > Recorre por niveles, recorre todo un nivel de una antes de pasar al siguiente.
